@@ -1,0 +1,9 @@
+#!ipxe
+# Boots RangerOS in Ramdisk with persistent storage on disk /dev/sda
+ 
+# Location of Kernel/Initrd images
+set base-url https://releases.rancher.com/os/latest/rancheros.iso
+ 
+kernel ${base-url}/vmlinuz rancher.state.dev=LABEL=RANCHER_STATE rancher.state.formatzero=true rancher.state.autoformat=[/dev/sda] rancher.cloud_init.datasources=[ec2]
+initrd ${base-url}/initrd
+boot
