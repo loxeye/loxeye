@@ -1,0 +1,27 @@
+#cloud-config
+hostname: rancher-os
+ssh_authorized_keys:
+  - ssh-rsa REPLACE_WITH_PUBLIC_SSH_KEY
+rancher:
+  debug: false
+  cloud_init:
+    datasources:
+      - ec2
+  state:
+   formatzero: true
+   fstype: auto
+   dev: LABEL=RANCHER_STATE
+   autoformat:
+     - /dev/vda
+     - /dev/sda
+  network:
+    dns:
+      nameservers:
+        - 8.8.8.8
+        - 8.8.4.4
+    interfaces:
+      eth0:
+        dhcp: true
+      eth1:
+        address: $private_ipv4/16
+        mtu: 1450
