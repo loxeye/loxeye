@@ -12,7 +12,6 @@ rancher:
    fstype: auto
    dev: LABEL=RANCHER_STATE
    autoformat:
-     - /dev/vda
      - /dev/sda
   network:
     dns:
